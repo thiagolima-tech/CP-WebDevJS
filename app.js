@@ -93,34 +93,39 @@ btnFiltro.addEventListener("click", (event) => {
   event.preventDefault();
   areaProducts.innerHTML = ``;
   products.forEach((product) => {
-    if (checkDisponiveis.checked === true && product.disponibilidade === true) {
-      areaProducts.append(
-        document.createElement("br"),
-        document.createElement("br"),
-        product.nome,
-        document.createElement("br"),
-        product.preco,
-        document.createElement("br"),
-        product.categoria,
-        document.createElement("br"),
-        "Disponível",
-        document.createElement("br")
-      );
-    } else if (checkDisponiveis.checked === false) {
-      areaProducts.append(
-        document.createElement("br"),
-        document.createElement("br"),
-        product.nome,
-        document.createElement("br"),
-        product.preco,
-        document.createElement("br"),
-        product.categoria,
-        document.createElement("br")
-      );
-      if (product.disponibilidade === true) {
-        areaProducts.append("Disponível");
-      } else {
-        areaProducts.append("Indisponível");
+    if (categorias.value === product.categoria) {
+      if (
+        checkDisponiveis.checked === true &&
+        product.disponibilidade === true
+      ) {
+        areaProducts.append(
+          document.createElement("br"),
+          document.createElement("br"),
+          product.nome,
+          document.createElement("br"),
+          product.preco,
+          document.createElement("br"),
+          product.categoria,
+          document.createElement("br"),
+          "Disponível",
+          document.createElement("br")
+        );
+      } else if (checkDisponiveis.checked === false) {
+        areaProducts.append(
+          document.createElement("br"),
+          document.createElement("br"),
+          product.nome,
+          document.createElement("br"),
+          product.preco,
+          document.createElement("br"),
+          product.categoria,
+          document.createElement("br")
+        );
+        if (product.disponibilidade === true) {
+          areaProducts.append("Disponível");
+        } else {
+          areaProducts.append("Indisponível");
+        }
       }
     }
   });
