@@ -86,7 +86,7 @@ btnTodos.addEventListener("click", (event) => {
       produto.style.backgroundColor = "#f0f0f0";
     });
     produto.addEventListener("mouseout", () => {
-      produto.style.backgroundColor = ""; // volta ao normal
+      produto.style.backgroundColor = "";
     });
   });
 });
@@ -119,7 +119,7 @@ btnFiltro.addEventListener("click", (event) => {
         produto.style.backgroundColor = "#f0f0f0";
       });
       produto.addEventListener("mouseout", () => {
-        produto.style.backgroundColor = ""; // volta ao normal
+        produto.style.backgroundColor = "";
       });
     }
   });
