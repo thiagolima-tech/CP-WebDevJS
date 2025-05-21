@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <button id="btnClick">Clique aqui</button>
-    <select id="filtro">
-        <option class="opt" value="1">1</option>
-        <option class="opt" value="2">2</option>
-        <option class="opt" value="3">3</option>
-    </select>
-
+  <body>
+    <fieldset>
+      <form>
+        <select id="categorias">
+          <option value="alimentos">Alimentos</option>
+          <option value="roupas">Roupas</option>
+          <option value="perifericos">Periféricos</option>
+        </select>
+        <br />
+        <label for="checkbox">Somente disponíveis</label>
+        <input type="checkbox" id="checkbox" />
+        <br />
+        <button id="btnFiltrar">Filtrar</button>
+        <button id="btnTodos">Mostrar todos os itens</button>
+      </form>
+    </fieldset>
     <div id="produtos"></div>
-</body>
-<script src="app.js"></script>
-
+  </body>
+  <script src="app.js"></script>
 </html>
