@@ -71,21 +71,23 @@ btnTodos.addEventListener("click", (event) => {
   event.preventDefault();
   areaProducts.innerHTML = ``;
   products.forEach((product) => {
-    areaProducts.append(
-      document.createElement("br"),
-      document.createElement("br"),
-      product.nome,
-      document.createElement("br"),
-      product.preco,
-      document.createElement("br"),
-      product.categoria,
-      document.createElement("br")
-    );
+    let produto = document.createElement("div");
     if (product.disponibilidade === true) {
-      areaProducts.append("Disponível");
+      produto.innerHTML = `<h2>${product.nome}<h2/><h3/>Preço: R$${product.preco}<h3/><h3>Categoria: ${product.categoria}<h3/><h3>Estoque Disponível<h3/>`;
+      areaProducts.append(produto);
     } else {
-      areaProducts.append("Indisponível");
+      produto.innerHTML = `<h2/>${product.nome}<h2/><h3>Preço: R$${product.preco}<h3/> <h3>Categoria: ${product.categoria}<h3/><h3>Estoque: Indisponível<h3/>`;
+      areaProducts.append(produto);
     }
+    produto.style.textAlign = "center";
+    produto.style.margin = "10px";
+    produto.style.border = "1px solid #ccc";
+    produto.addEventListener("mouseover", () => {
+      produto.style.backgroundColor = "#f0f0f0";
+    });
+    produto.addEventListener("mouseout", () => {
+      produto.style.backgroundColor = ""; // volta ao normal
+    });
   });
 });
 
@@ -93,40 +95,32 @@ btnFiltro.addEventListener("click", (event) => {
   event.preventDefault();
   areaProducts.innerHTML = ``;
   products.forEach((product) => {
+    let produto = document.createElement("div");
     if (categorias.value === product.categoria) {
       if (
         checkDisponiveis.checked === true &&
         product.disponibilidade === true
       ) {
-        areaProducts.append(
-          document.createElement("br"),
-          document.createElement("br"),
-          product.nome,
-          document.createElement("br"),
-          product.preco,
-          document.createElement("br"),
-          product.categoria,
-          document.createElement("br"),
-          "Disponível",
-          document.createElement("br")
-        );
+        produto.innerHTML = `<h2>${product.nome}<h2/><h3/>Preço: R$${product.preco}<h3/><h3>Categoria: ${product.categoria}<h3/><h3>Estoque Disponível<h3/>`;
+        areaProducts.append(produto);
       } else if (checkDisponiveis.checked === false) {
-        areaProducts.append(
-          document.createElement("br"),
-          document.createElement("br"),
-          product.nome,
-          document.createElement("br"),
-          product.preco,
-          document.createElement("br"),
-          product.categoria,
-          document.createElement("br")
-        );
         if (product.disponibilidade === true) {
-          areaProducts.append("Disponível");
+          produto.innerHTML = `<h2>${product.nome}<h2/><h3/>Preço: R$${product.preco}<h3/><h3>Categoria: ${product.categoria}<h3/><h3>Estoque Disponível<h3/>`;
+          areaProducts.append(produto);
         } else {
-          areaProducts.append("Indisponível");
+          produto.innerHTML = `<h2/>${product.nome}<h2/><h3>Preço: R$${product.preco}<h3/> <h3>Categoria: ${product.categoria}<h3/><h3>Estoque: Indisponível<h3/>`;
+          areaProducts.append(produto);
         }
       }
+      produto.style.textAlign = "center";
+      produto.style.margin = "10px";
+      produto.style.border = "1px solid #ccc";
+      produto.addEventListener("mouseover", () => {
+        produto.style.backgroundColor = "#f0f0f0";
+      });
+      produto.addEventListener("mouseout", () => {
+        produto.style.backgroundColor = ""; // volta ao normal
+      });
     }
   });
 });
