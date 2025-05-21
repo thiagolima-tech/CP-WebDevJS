@@ -1,62 +1,62 @@
 products = [
   {
-    nome: "mouse",
+    nome: "Mouse",
     preco: 20,
-    categoria: "perifericos",
+    categoria: "Perifericos",
     disponibilidade: true,
   },
   {
-    nome: "teclado",
+    nome: "Teclado",
     preco: 110,
-    categoria: "perifericos",
+    categoria: "Perifericos",
     disponibilidade: true,
   },
   {
-    nome: "fone",
+    nome: "Fone de ouvido",
     preco: 50,
-    categoria: "perifericos",
+    categoria: "Perifericos",
     disponibilidade: false,
   },
   {
-    nome: "salame",
+    nome: "Salame",
     preco: 10,
-    categoria: "alimentos",
+    categoria: "Alimentos",
     disponibilidade: true,
   },
   {
-    nome: "pipoca",
+    nome: "Pipoca",
     preco: 5,
-    categoria: "alimentos",
+    categoria: "Alimentos",
     disponibilidade: false,
   },
   {
-    nome: "tomate",
+    nome: "Tomate",
     preco: 4,
-    categoria: "alimentos",
+    categoria: "Alimentos",
     disponibilidade: true,
   },
   {
-    nome: "macarrao",
+    nome: "Macarrao",
     preco: 10,
-    categoria: "alimentos",
+    categoria: "Alimentos",
     disponibilidade: false,
   },
   {
-    nome: "camisa",
+    nome: "Camisa",
     preco: 70,
-    categoria: "roupas",
+    categoria: "Roupas",
     disponibilidade: true,
   },
   {
-    nome: "calca",
+    nome: "Calça",
     preco: 100,
-    categoria: "roupas",
+    categoria: "Roupas",
     disponibilidade: true,
   },
   {
-    nome: "tenis",
+    nome: "Tenis",
     preco: 30,
-    categoria: "roupas",
+    categoria: "Roupas",
     disponibilidade: true,
   },
 ];
@@ -67,10 +67,61 @@ const btnFiltro = document.getElementById("btnFiltrar");
 const btnTodos = document.getElementById("btnTodos");
 const checkDisponiveis = document.getElementById("checkbox");
 
-filtro.addEventListener("mouseover", () => {
-  let areaProduct = document.createElement("div");
-  areaProduct.innerHTML = `
-    <h1> Texto </h1>
-    `;
-  products.append(product);
+btnTodos.addEventListener("click", (event) => {
+  event.preventDefault();
+  areaProducts.innerHTML = ``;
+  products.forEach((product) => {
+    areaProducts.append(
+      document.createElement("br"),
+      document.createElement("br"),
+      product.nome,
+      document.createElement("br"),
+      product.preco,
+      document.createElement("br"),
+      product.categoria,
+      document.createElement("br")
+    );
+    if (product.disponibilidade === true) {
+      areaProducts.append("Disponível");
+    } else {
+      areaProducts.append("Indisponível");
+    }
+  });
+});
+
+btnFiltro.addEventListener("click", (event) => {
+  event.preventDefault();
+  areaProducts.innerHTML = ``;
+  products.forEach((product) => {
+    if (checkDisponiveis.checked === true && product.disponibilidade === true) {
+      areaProducts.append(
+        document.createElement("br"),
+        document.createElement("br"),
+        product.nome,
+        document.createElement("br"),
+        product.preco,
+        document.createElement("br"),
+        product.categoria,
+        document.createElement("br"),
+        "Disponível",
+        document.createElement("br")
+      );
+    } else if (checkDisponiveis.checked === false) {
+      areaProducts.append(
+        document.createElement("br"),
+        document.createElement("br"),
+        product.nome,
+        document.createElement("br"),
+        product.preco,
+        document.createElement("br"),
+        product.categoria,
+        document.createElement("br")
+      );
+      if (product.disponibilidade === true) {
+        areaProducts.append("Disponível");
+      } else {
+        areaProducts.append("Indisponível");
+      }
+    }
+  });
 });
